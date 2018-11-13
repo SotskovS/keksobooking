@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Сергей Сотсков](https://up.htmlacademy.ru/javascript/16/user/222987).
-* Наставник: `Неизвестно`.
+* Наставник: `Дмитрий Рябинин`.
 
 ---
 
