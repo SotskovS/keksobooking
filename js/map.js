@@ -56,12 +56,11 @@ var pinTemplate = document.querySelector('#pin');
 var createPinElement = function (data) {
   var pin = document.createElement('button');
   pin.classList.add('map__pin');
-  picture.style.width = '45px';
-  picture.style.height = '45px';
-  picture.src = ads[0].author.avatar;
-  pin.appendChild(picture);
+  pin.style.width = '45px';
+  pin.style.height = '45px';
+  pin.src = ads[0].author.avatar;
   return pin;
-}
+};
 
 var makeElement = function (tag, className, text) {
   var element = document.createElement(tag);
