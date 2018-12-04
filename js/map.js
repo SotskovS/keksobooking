@@ -22,7 +22,7 @@ var randomNum = function (min, max) {
   return rand;
 };
 
-var generateData = function (index) {
+var generateAd = function (index) {
 
   var randomX = randomNum(0, mapPinsElement.offsetWidth);
   var randomY = randomNum(130, 630);
@@ -32,7 +32,7 @@ var generateData = function (index) {
 
   var adsItem = {
     'author': {
-      'avatar': '../img/avatars/user0' + (index + 1) + '.png'
+      'avatar': 'img/avatars/user0' + (index + 1) + '.png'
     },
     'offer': {
       'title': TITLES[index],
@@ -62,7 +62,7 @@ var generateData = function (index) {
 var getData = function (num) {
   var data = [];
   for (var i = 0; i < num; i++) {
-    data.push(generateData(i));
+    data.push(generateAd(i));
   }
   return data;
 };
