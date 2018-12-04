@@ -1,6 +1,19 @@
 'use strict';
 
 var TITLES = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
+var TYPES = ['palace', 'flat', 'house', 'bungalo'];
+var CHECK_TIME = ['12:00', '13:00', '14:00'];
+var FEATURES = ['wifi', 'dishwasher', 'washer', 'elevator', 'conditioner'];
+
+var getRandomItem = function (array) {
+  var index = randomNum(0, array.length - 1);
+  return array[index];
+};
+
+var getRandomSlice = function (array) {
+  var begin = randomNum(0, array.length - 1);
+  return array.slice(begin);
+};
 
 var mapPinsElement = document.querySelector('.map__pins');
 
@@ -15,6 +28,7 @@ var generateData = function (index) {
   var randomY = randomNum(130, 630);
   var randomPrice = randomNum(1000, 1000000);
   var randomRooms = randomNum(1, 5);
+  var randomGuests = randomNum(1, 15);
 
   var adsItem = {
     'author': {
@@ -22,15 +36,15 @@ var generateData = function (index) {
     },
     'offer': {
       'title': TITLES[index],
-      'address': '600, 350',
+      'address': randomX + ',' + randomY,
       'price': randomPrice,
-      'type': 'palace',
+      'type': getRandomItem(TYPES),
       'rooms': randomRooms,
-      'guests': 12,
-      'checkin': '12:00',
-      'checkout': '13:00',
-      'features': ['wifi', 'dishwasher', 'washer', 'elevator', 'conditioner'],
-      'description': 'Отличное жильё',
+      'guests': randomGuests,
+      'checkin': getRandomItem(CHECK_TIME),
+      'checkout': getRandomItem(CHECK_TIME),
+      'features': getRandomSlice(FEATURES),
+      'description': '',
       'photos': [
         'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
         'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
@@ -44,7 +58,6 @@ var generateData = function (index) {
   };
   return adsItem;
 };
-
 
 var getData = function (num) {
   var data = [];
