@@ -5,6 +5,14 @@ var TYPES = ['palace', 'flat', 'house', 'bungalo'];
 var CHECK_TIME = ['12:00', '13:00', '14:00'];
 var FEATURES = ['wifi', 'dishwasher', 'washer', 'elevator', 'conditioner'];
 
+var mapPinsElement = document.querySelector('.map__pins');
+var pinTemplate = document.querySelector('#pin').content.querySelector('button');
+var map = document.querySelector('.map');
+var itemTemplate = document.querySelector('#card').content.querySelector('article');
+var mapList = document.querySelector('.map');
+
+mapList.classList.remove('map--faded');
+
 var getRandomItem = function (array) {
   var index = randomNum(0, array.length - 1);
   return array[index];
@@ -14,8 +22,6 @@ var getRandomSlice = function (array) {
   var begin = randomNum(0, array.length - 1);
   return array.slice(begin);
 };
-
-var mapPinsElement = document.querySelector('.map__pins');
 
 var randomNum = function (min, max) {
   var rand = Math.round(min + Math.random() * (max - min));
@@ -69,11 +75,6 @@ var getData = function (num) {
 
 var adsArray = getData(8);
 
-var mapList = document.querySelector('.map');
-mapList.classList.remove('map--faded');
-
-var pinTemplate = document.querySelector('#pin').content.querySelector('button');
-
 var createPinElement = function () {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < 8; i++) {
@@ -87,9 +88,6 @@ var createPinElement = function () {
   }
   return fragment;
 };
-
-var map = document.querySelector('.map');
-var itemTemplate = document.querySelector('#card').content.querySelector('article');
 
 var adsItem = function () {
   var fragment = document.createDocumentFragment();
