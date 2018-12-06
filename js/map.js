@@ -74,20 +74,23 @@ var getData = function (num) {
 };
 
 var adsArray = getData(8);
-
+console.log(adsArray);
 var createPinElement = function () {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < 8; i++) {
     var pin = pinTemplate.cloneNode(true);
     var picture = pin.querySelector('img');
     pin.classList.add('map__pin--main');
-    pin.style.left = adsArray[0].location.x + 'px';
-    pin.style.top = adsArray[0].location.y + 'px';
-    picture.src = adsArray[0].author.avatar;
+    pin.style.left = adsArray[i].location.x + 'px';
+    pin.style.top = adsArray[i].location.y + 'px';
+    picture.src = adsArray[i].author.avatar;
     fragment.appendChild(pin);
   }
+ console.log(fragment);
+ console.log(pin);
   return fragment;
 };
+console.log(pinTemplate);
 
 var adsItem = function () {
   var fragment = document.createDocumentFragment();
