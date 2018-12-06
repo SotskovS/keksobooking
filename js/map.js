@@ -74,7 +74,6 @@ var getData = function (num) {
 };
 
 var adsArray = getData(8);
-console.log(adsArray);
 var createPinElement = function () {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < 8; i++) {
@@ -86,11 +85,8 @@ var createPinElement = function () {
     picture.src = adsArray[i].author.avatar;
     fragment.appendChild(pin);
   }
- console.log(fragment);
- console.log(pin);
   return fragment;
 };
-console.log(pinTemplate);
 
 var adsItem = function () {
   var fragment = document.createDocumentFragment();
