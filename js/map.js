@@ -74,20 +74,26 @@ var getData = function (num) {
 };
 
 var adsArray = getData(8);
-var createPinElement = function () {
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < 8; i++) {
-    var pin = pinTemplate.cloneNode(true);
-    var picture = pin.querySelector('img');
-    pin.classList.add('map__pin--main');
-    pin.style.left = adsArray[i].location.x + 'px';
-    pin.style.top = adsArray[i].location.y + 'px';
-    picture.src = adsArray[i].author.avatar;
-    fragment.appendChild(pin);
-  }
-  return fragment;
+
+var createPinElement = function (obj) {
+  var pin = pinTemplate.cloneNode(true);
+  var picture = pin.querySelector('img');
+  pin.style.left = obj.location.x + 'px';
+  pin.style.top = obj.location.y + 'px';
+  picture.src = obj.author.avatar;
+
+  return pin;
 };
 
+var renderPins = function (data) {
+  var fragment = document.createDocumentFragment();
+  data.forEach(function (item) {
+    fragment.appendChild(createPinElement(item));
+  });
+  mapPinsElement.appendChild(fragment);
+};
+
+/*
 var adsItem = function () {
   var fragment = document.createDocumentFragment();
 
@@ -130,5 +136,6 @@ var adsItem = function () {
   return fragment;
 };
 map.insertBefore(adsItem(), map.children[1]);
-
+*/
+renderPins(adsArray);
 
