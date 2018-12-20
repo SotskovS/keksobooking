@@ -10,6 +10,9 @@ var pinTemplate = document.querySelector('#pin').content.querySelector('button')
 var mapElement = document.querySelector('.map');
 var cardTemplate = document.querySelector('#card').content.querySelector('article');
 var mapList = document.querySelector('.map');
+var fieldsetList = document.querySelectorAll('fieldset');
+var adForm = document.querySelector('.ad-form');
+var mainPin = document.querySelector('.map__pin--main');
 
 var getRandomItem = function (array) {
   var index = randomNum(0, array.length - 1);
@@ -124,7 +127,34 @@ var showAdCard = function (obj) {
   mapElement.insertBefore(cardElement, mapElement.querySelector('.map__filters-container'));
 };
 
+var formActivation = function (arr, active) {
+  for (var i = 0; i < arr.length; i++) {
+    if (active === 'unactivated') {
+      arr[i].setAttribute('disabled', 'disabled');
+    } else {
+      if (active === 'activated') {
+        arr[i].removeAttribute('disabled');
+      }
+    }
+  }
+};
+
+var getMainPinCoords = function (elem) {
+  var mainPinCoords = elem.getBoundingClientRect();
+  var mainPinAdress = mainPinCoords.left + ', ' + mainPinCoords.top;
+  var addressElementDom = document.getElementById('address');
+  addressElementDom.setAttribute('value', mainPinAdress);
+};
+
 var adsArray = getData(8);
-mapList.classList.remove('map--faded');
-renderPins(adsArray);
-showAdCard(adsArray[0]);
+formActivation(fieldsetList, 'unactivated');
+getMainPinCoords(mainPin);
+
+mainPin.addEventListener('mouseup', function () {
+  mapList.classList.remove('map--faded');
+  formActivation(fieldsetList, 'activated');
+  adForm.classList.remove('ad-form--disabled');
+  renderPins(adsArray);
+});
+
+
